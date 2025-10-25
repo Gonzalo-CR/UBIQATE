@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UBIQATE - Conversor de Coordenadas, Direcciones y Mapa V0.2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.8.0/proj4.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>UBIQATE - Conversor de Coordenadas, Direcciones y Mapa </h1>
+        <h3>Version 0.2</h3>
+        <div class="input-section">
+            <!-- Campo para dirección inicial -->
+            <input type="text" id="start-address" placeholder="Ingrese dirección inicial">
+            <button id="find-location-btn">Buscar Ubicación Inicial</button>
+            <!-- Otros campos de entrada -->
+            <select id="input-type">
+                <option value="dd">Grados Decimales</option>
+                <option value="dms">Grados, Minutos, Segundos</option>
+                <option value="utm">UTM</option>
+                <option value="address">Dirección</option>
+            </select>
+            <div id="dd-input" class="coordinate-input">
+                <input type="number" id="dd-lat" placeholder="Latitud">
+                <input type="number" id="dd-lon" placeholder="Longitud">
+            </div>
+            <div id="dms-input" class="coordinate-input" style="display:none;">
+                <input type="number" id="dms-lat-d" placeholder="Grados Lat">
+                <input type="number" id="dms-lat-m" placeholder="Minutos Lat">
+                <input type="number" id="dms-lat-s" placeholder="Segundos Lat">
+                <select id="dms-lat-dir">
+                    <option value="N">N</option>
+                    <option value="S">S</option>
+                </select>
+                <input type="number" id="dms-lon-d" placeholder="Grados Lon">
+                <input type="number" id="dms-lon-m" placeholder="Minutos Lon">
+                <input type="number" id="dms-lon-s" placeholder="Segundos Lon">
+                <select id="dms-lon-dir">
+                    <option value="E">E</option>
+                    <option value="W">W</option>
+                </select>
+            </div>
+            <div id="utm-input" class="coordinate-input" style="display:none;">
+                <input type="number" id="utm-zone" placeholder="Zona UTM">
+                <select id="utm-hemisphere">
+                    <option value="N">Norte</option>
+                    <option value="S">Sur</option>
+                </select>
+                <input type="number" id="utm-easting" placeholder="Este">
+                <input type="number" id="utm-northing" placeholder="Norte">
+            </div>
+            <div id="address-input" class="coordinate-input" style="display:none;">
+                <input type="text" id="address" placeholder="Ingrese una dirección">
+            </div>
+            <button id="convert-btn">Convertir y Mostrar</button>
+        </div>
+        <div class="output-section">
+            <h2>Resultados:</h2>
+            <p id="dd-output"></p>
+            <p id="dms-output"></p>
+            <p id="utm-output"></p>
+            <p id="address-output"></p>
+            <p id="distance-output"></p>
+        </div>
+        <div id="map" style="height: 400px;"></div>
+        <p>Haga clic en cualquier punto del mapa para obtener sus coordenadas y dirección.</p>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 - GECR</p>
+            <p>Todos los derechos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>
